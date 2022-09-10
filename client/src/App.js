@@ -8,6 +8,7 @@ function App() {
 
   // room state
   const [room, setRoom] = useState("");
+  const [joinedRoom, setJoinedRoom] = useState("");
 
   // message states
   const [message, setMessage] = useState("");
@@ -16,6 +17,7 @@ function App() {
   const joinRoom = () => {
     if (room !== "") {
       socket.emit("join_room", room);
+      setJoinedRoom(room)
     }
   }
 
@@ -43,7 +45,8 @@ function App() {
           setMessage(event.target.value)
         }} />
       <button onClick={sendMessage}>Send Message</button>
-      <h1>Message: {messageReceived}</h1>
+      <h1>Room: {joinedRoom}</h1>
+      <h2>Message: {messageReceived}</h2>
     </div>
   );
 }
