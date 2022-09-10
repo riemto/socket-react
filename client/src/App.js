@@ -4,7 +4,7 @@ const socket = io.connect("http://localhost:3001")
 
 function App() {
   const sendMessage = () => {
-
+    socket.emit("send_message", { message: "hello" })
   }
 
   return (
