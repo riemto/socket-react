@@ -22,7 +22,10 @@ io.on("connection", socket => {
     })
 
     socket.on("send_message", (data) => {
-        socket.to(data.room).emit("receive_message", data)
+        // send it to everyone in that room
+        io.to(data.room).emit("receive_message", data)
+        // broadcase in that room (all except own)
+        // socket.to(data.room).emit("receive_message", data)
     })
 })
 

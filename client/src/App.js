@@ -22,12 +22,14 @@ function App() {
   }
 
   const sendMessage = () => {
+    console.log("send message", message, "from room", room)
     socket.emit("send_message", { room, message })
   }
 
   // the arrow function will run whenever socket change 
   useEffect(() => {
     socket.on("receive_message", (data) => {
+      console.log("received message")
       setMessageReceived(data.message)
     })
   }, [socket])
