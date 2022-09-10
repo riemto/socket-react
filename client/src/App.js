@@ -1,9 +1,16 @@
 import './App.css';
+import io from "socket.io-client"
+const socket = io.connect("http://localhost:3001")
 
 function App() {
+  const sendMessage = () => {
+
+  }
+
   return (
     <div className="App">
-      <h1>React App</h1>
+      <input placeholder='message' />
+      <button onClick={sendMessage}>Send Message</button>
     </div>
   );
 }
