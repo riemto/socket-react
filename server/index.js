@@ -19,6 +19,8 @@ io.on("connection", socket => {
 
     socket.on("send_message", (data) => {
         console.log(data)
+        // send to everyone except myself
+        socket.broadcast.emit("receive_message", data)
     })
 })
 
