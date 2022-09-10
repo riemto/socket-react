@@ -22,7 +22,6 @@ io.on("connection", socket => {
     })
 
     socket.on("send_message", (data) => {
-        // send to everyone except myself
         socket.to(data.room).emit("receive_message", data)
     })
 })
