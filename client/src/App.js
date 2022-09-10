@@ -6,6 +6,7 @@ const socket = io.connect("http://localhost:3001")
 
 function App() {
   const [message, setMessage] = useState("");
+  const [messageReceived, setMessageReceived] = useState("");
 
   const sendMessage = () => {
     socket.emit("send_message", { message })
@@ -14,7 +15,7 @@ function App() {
   // the arrow function will run whenever socket change 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      alert(data.message)
+      setMessageReceived(data.message)
     })
   }, [socket])
 
@@ -26,6 +27,7 @@ function App() {
           setMessage(event.target.value)
         }} />
       <button onClick={sendMessage}>Send Message</button>
+      <h1>Message: {messageReceived}</h1>
     </div>
   );
 }
